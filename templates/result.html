@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+</head>
+<body>
+    <h1>Prediction Result for {{ request.form['crypto_currency'] }}</h1>
+    <h2>R2 Score: {{ result.r2_score }}</h2>
+    <h2>Mean Absolute Percentage Error (MAPE): {{ result['mape'] }}</h2>
+    <h2>RMSE: {{ result.rmse }}</h2>
+    <h2>Upside: {{ result.upside }}%</h2>
+    <h2>Downside: {{ result.downside }}%</h2>
+    
+    <h3>Prediction Chart:</h3>
+    <img src="{{ url_for('display_image', filename=result.prediction_image) }}" alt="Prediction Chart">
+
+    <h3>Forecast Chart:</h3>
+    <img src="{{ url_for('display_image', filename=result.forecast_image) }}" alt="Forecast Chart">
+</body>
+</html>
